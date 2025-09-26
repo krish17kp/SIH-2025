@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study–Stress Balancer</title>
+    <link rel="stylesheet" href="/static/study-balance.css" />
+  </head>
+  <body>
+    <section class="card">
+      <h2>Study–Stress Balancer</h2>
+      <p class="muted">
+        Fill this week’s data (study, sleep, deadlines, classes, mood). Click
+        <b>Balance Me</b>. This gives your cluster (<i
+          >Overloaded / Balanced / Relaxed</i
+        >) and a 7-day plan.
+      </p>
+
+      <div id="days"></div>
+
+      <div class="row">
+        <button id="balanceBtn">Balance Me</button>
+        <span id="status" class="muted"></span>
+      </div>
+
+      <div id="result" class="hide">
+        <h3>Result: <span id="label" class="pill"></span></h3>
+        <pre id="centroid" class="muted small"></pre>
+
+        <h3>7-Day Plan</h3>
+        <div id="plan"></div>
+      </div>
+    </section>
+
+    <script src="/static/study-balance.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In / Sign Up – Student Minds</title>
+
+    <link rel="stylesheet" href="auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css"
+    />
+  </head>
+  <body>
+    <a href="index.html" class="back-site" aria-label="Back to homepage">
+      <span class="chev">‹</span> Back to site
+    </a>
+
+    <section class="auth-hero">
+      <div class="container">
+        <div class="row full-screen align-items-start">
+          <!-- LEFT -->
+          <div class="left">
+            <span class="line"></span>
+            <h2>
+              Hello, I'm John More,<br />
+              a <span>digital designer</span>
+            </h2>
+            <p>Web Design Tutorial using HTML &amp; CSS</p>
+            <a href="#" class="btn">Contact</a>
+            <div class="social-media">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="right">
+            <div class="form">
+              <div class="text-center">
+                <h6 class="tabs"><span>LOG IN</span><span>SIGN UP</span></h6>
+                <input type="checkbox" class="checkbox" id="reg-log" />
+                <label
+                  for="reg-log"
+                  title="Switch between Log in and Sign up"
+                ></label>
+
+                <div class="card-3d-wrap" aria-live="polite">
+                  <div class="card-3d-wrapper">
+                    <!-- LOGIN -->
+                    <div
+                      class="card-front"
+                      role="form"
+                      aria-label="Log in form"
+                    >
+                      <div class="center-wrap">
+                        <h4 class="heading">Log In</h4>
+
+                        <div class="form-group">
+                          <input
+                            id="loginEmail"
+                            type="email"
+                            class="form-style"
+                            placeholder="Your Email"
+                          />
+                          <i class="input-icon material-icons"
+                            >alternate_email</i
+                          >
+                        </div>
+                        <div class="form-group">
+                          <input
+                            id="loginPass"
+                            type="password"
+                            class="form-style"
+                            placeholder="Your Password"
+                          />
+                          <i class="input-icon material-icons">lock</i>
+                        </div>
+
+                        <button id="loginBtn" class="btn" type="button">
+                          Submit
+                        </button>
+                        <p class="text-center">
+                          <a id="forgotLink" href="#" class="link"
+                            >Forgot your password?</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- SIGNUP -->
+                    <div
+                      class="card-back"
+                      role="form"
+                      aria-label="Sign up form"
+                    >
+                      <div class="center-wrap">
+                        <h4 class="heading">Sign Up</h4>
+
+                        <div class="form-group">
+                          <input
+                            id="signupName"
+                            type="text"
+                            class="form-style"
+                            placeholder="Your Name"
+                          />
+                          <i class="input-icon material-icons">perm_identity</i>
+                        </div>
+                        <div class="form-group">
+                          <input
+                            id="signupEmail"
+                            type="email"
+                            class="form-style"
+                            placeholder="Your Email"
+                          />
+                          <i class="input-icon material-icons"
+                            >alternate_email</i
+                          >
+                        </div>
+                        <div class="form-group">
+                          <input
+                            id="signupPass"
+                            type="password"
+                            class="form-style"
+                            placeholder="Your Password"
+                          />
+                          <i class="input-icon material-icons">lock</i>
+                        </div>
+
+                        <button id="signupBtn" class="btn" type="button">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /card-3d-wrap -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Load once: config first, then auth wiring -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth.js"></script>
+  </body>
+</html>

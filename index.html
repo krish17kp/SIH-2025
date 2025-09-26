@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Unwind – UI Clone</title>
+    <meta
+      name="description"
+      content="Student Minds UI clone for front-end practice."
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script src="chatbot-widget.js" defer></script>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      ChatbotWidget.init({
+        endpoint: "http://localhost:5678/webhook/mental-bot", // n8n webhook
+        bubbleText: "Chat with us",
+        title: "Student Support",
+        subtitle: "I'm here to listen ",
+        crisisLink: "https://www.studentminds.org.uk/get-support/urgent-help/",
+        brandColor: "#ff7a59",
+        accentColor: "#0E7C86",
+        userTextColor: "#0B5FFF",
+        botTextColor: "#0F172A",
+        enableEmoji: true,
+        enableImages: true,
+        hoverOpen: true,
+        pillSide: "right",
+      });
+    });
+  </script>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Chatbot widget (drop-in) -->
+
+    <header class="header" role="banner">
+      <div class="announcement" role="region" aria-label="Site announcement">
+        <div class="container announcement__inner">
+          <p class="announcement__text">
+            Need help now? If your life is in danger, call 999 or go to A&E. For
+            urgent mental health support, use the button at the top right.
+          </p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="container nav__inner">
+          <!-- Left: Logo -->
+          <a href="#home" class="nav__logo" aria-label="Student Minds home">
+            <span class="nav__logo-mark" aria-hidden="true">SM</span>
+            <span class="nav__logo-text">Student Minds</span>
+          </a>
+
+          <!-- Center: Menu -->
+          <button
+            class="nav__toggle"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            aria-label="Toggle navigation"
+          >
+            <span class="nav__toggle-bar"></span>
+            <span class="nav__toggle-bar"></span>
+            <span class="nav__toggle-bar"></span>
+          </button>
+
+          <ul class="nav__menu" id="navMenu" role="menubar">
+            <li class="nav__item nav__item--has-submenu" role="none">
+              <button
+                class="nav__link"
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="submenu-support"
+              >
+                Get support
+                <svg
+                  class="icon icon--chev"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5.5 7l4.5 4.5L14.5 7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="nav__submenu"
+                id="submenu-support"
+                role="menu"
+                aria-label="Get support submenu"
+              >
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#support"
+                    >Support overview</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#search"
+                    >Find resources</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#contact"
+                    >Contact us</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav__item" role="none">
+              <a role="menuitem" class="nav__link" href="#stories"
+                >Student stories</a
+              >
+            </li>
+            <a class="button button--primary" href="community.html"
+              >Community</a
+            >
+            <li><a href="study-balance.html">Study–Stress Balancer</a></li>
+
+            <li class="nav__item nav__item--has-submenu" role="none">
+              <button
+                class="nav__link"
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="submenu-about"
+              >
+                About us
+                <svg
+                  class="icon icon--chev"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5.5 7l4.5 4.5L14.5 7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="nav__submenu"
+                id="submenu-about"
+                role="menu"
+                aria-label="About us submenu"
+              >
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#about"
+                    >Our mission</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#about"
+                    >Our team</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#about"
+                    >Our partners</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav__item nav__item--has-submenu" role="none">
+              <button
+                class="nav__link"
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="submenu-resources"
+              >
+                Resources
+                <svg
+                  class="icon icon--chev"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5.5 7l4.5 4.5L14.5 7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="nav__submenu"
+                id="submenu-resources"
+                role="menu"
+                aria-label="Resources submenu"
+              >
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#search"
+                    >Guides</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#search"
+                    >Toolkits</a
+                  >
+                </li>
+                <li role="none">
+                  <a role="menuitem" class="nav__submenu-link" href="#search"
+                    >Webinars</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav__item" role="none">
+              <a role="menuitem" class="nav__link" href="#contact">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Right: Actions -->
+          <div class="nav__actions">
+            <button
+              class="nav__search-btn"
+              aria-expanded="false"
+              aria-controls="navSearch"
+              aria-label="Open search"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10.5 18a7.5 7.5 0 1 1 5.31-12.81A7.5 7.5 0 0 1 10.5 18zM16 16l5 5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <a
+              href="#urgent"
+              class="button button--urgent"
+              aria-label="Get urgent support"
+              >Get urgent support</a
+            >
+            <a
+              href="#donate"
+              class="button button--primary"
+              aria-label="Make a donation"
+              >About</a
+            >
+            <!-- NEW: Login / Sign up -->
+            <a
+              href="login.html"
+              class="button button--secondary"
+              aria-label="Log in or Sign up"
+              >Login / Sign up</a
+            >
+          </div>
+        </div>
+
+        <!-- Expandable search -->
+        <div class="nav-search" id="navSearch" role="search">
+          <div class="container nav-search__inner">
+            <form
+              class="nav-search__form"
+              action="#search"
+              method="get"
+              role="search"
+            >
+              <label class="visually-hidden" for="q">Search</label>
+              <input
+                id="q"
+                name="q"
+                class="nav-search__input"
+                type="search"
+                placeholder="Search resources, stories, and support..."
+              />
+              <button
+                class="button button--primary"
+                type="submit"
+                aria-label="Submit search"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="main" tabindex="-1">
+      <!-- Hero -->
+      <section id="home" class="hero">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <h1 class="hero__title">We’re here for students’ mental health</h1>
+            <p class="hero__subtitle">
+              Explore practical support, real student stories, and resources for
+              your wellbeing and university life.
+            </p>
+            <div class="hero__actions">
+              <a href="#support" class="button button--primary">Get support</a>
+              <a href="#stories" class="button button--ghost"
+                >Read student stories</a
+              >
+            </div>
+          </div>
+          <div class="hero__card">
+            <h2 class="hero__card-title">Need support now?</h2>
+            <p class="hero__card-text">
+              If you’re feeling overwhelmed, you are not alone. Find immediate
+              steps and services that can help.
+            </p>
+            <a href="#urgent" class="button button--urgent button--block"
+              >Get urgent support</a
+            >
+          </div>
+        </div>
+        <div class="hero__bg" aria-hidden="true"></div>
+      </section>
+
+      <!-- Get support cards -->
+      <section id="support" class="support">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-header__title">Get support</h2>
+            <p class="section-header__subtitle">
+              Find guidance, self-help, and services tailored to students.
+            </p>
+          </header>
+
+          <div class="support__grid">
+            <article class="card card--support">
+              <img
+                class="card__image"
+                src="https://via.placeholder.com/600x400"
+                alt="Illustration for anxiety and stress"
+              />
+              <div class="card__body">
+                <h3 class="card__title">Anxiety and stress</h3>
+                <p class="card__text">
+                  Tips, coping strategies, and where to get help.
+                </p>
+                <a href="#search" class="card__link">Explore resources</a>
+              </div>
+            </article>
+
+            <article class="card card--support">
+              <img
+                class="card__image"
+                src="https://via.placeholder.com/600x400"
+                alt="Illustration for exam pressure"
+              />
+              <div class="card__body">
+                <h3 class="card__title">Exam pressure</h3>
+                <p class="card__text">
+                  Manage expectations and workload with practical advice.
+                </p>
+                <a href="#search" class="card__link">Explore resources</a>
+              </div>
+            </article>
+
+            <article class="card card--support">
+              <img
+                class="card__image"
+                src="https://via.placeholder.com/600x400"
+                alt="Illustration for low mood"
+              />
+              <div class="card__body">
+                <h3 class="card__title">Low mood</h3>
+                <p class="card__text">
+                  Understand signs and find ways to feel better.
+                </p>
+                <a href="#search" class="card__link">Explore resources</a>
+              </div>
+            </article>
+
+            <article class="card card--support">
+              <img
+                class="card__image"
+                src="https://via.placeholder.com/600x400"
+                alt="Illustration for support services"
+              />
+              <div class="card__body">
+                <h3 class="card__title">University support services</h3>
+                <p class="card__text">What’s available and how to access it.</p>
+                <a href="#search" class="card__link">Explore resources</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student stories -->
+      <section id="stories" class="stories">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-header__title">Student stories</h2>
+            <p class="section-header__subtitle">
+              Experiences and insights from students like you.
+            </p>
+          </header>
+
+          <div class="stories__grid">
+            <article class="story-card">
+              <div class="story-card__media">
+                <img
+                  src="https://via.placeholder.com/600x400"
+                  alt="Student sitting with notebook"
+                />
+                <span class="story-card__meta">
+                  <svg
+                    class="icon icon--clock"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M12 7v5l3 2"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  5 min read
+                </span>
+              </div>
+              <div class="story-card__body">
+                <h3 class="story-card__title">Finding balance in first year</h3>
+                <p class="story-card__excerpt">
+                  How I adjusted to new routines, handled homesickness, and
+                  found my rhythm.
+                </p>
+                <a class="story-card__link" href="#read">Read more</a>
+              </div>
+            </article>
+
+            <article class="story-card">
+              <div class="story-card__media">
+                <img
+                  src="https://via.placeholder.com/600x400"
+                  alt="Group of students talking"
+                />
+                <span class="story-card__meta">
+                  <svg
+                    class="icon icon--clock"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M12 7v5l3 2"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  7 min read
+                </span>
+              </div>
+              <div class="story-card__body">
+                <h3 class="story-card__title">
+                  Reaching out for help changed everything
+                </h3>
+                <p class="story-card__excerpt">
+                  My journey from quiet struggles to asking for support and
+                  thriving.
+                </p>
+                <a class="story-card__link" href="#read">Read more</a>
+              </div>
+            </article>
+
+            <article class="story-card">
+              <div class="story-card__media">
+                <img
+                  src="https://via.placeholder.com/600x400"
+                  alt="Student walking on campus"
+                />
+                <span class="story-card__meta">
+                  <svg
+                    class="icon icon--clock"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <path
+                      d="M12 7v5l3 2"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  4 min read
+                </span>
+              </div>
+              <div class="story-card__body">
+                <h3 class="story-card__title">Coping with exam anxiety</h3>
+                <p class="story-card__excerpt">
+                  Simple strategies that helped me feel calmer and more
+                  prepared.
+                </p>
+                <a class="story-card__link" href="#read">Read more</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search + Filters -->
+      <section id="search" class="search">
+        <div class="container search__inner">
+          <aside class="filters" aria-label="Filters">
+            <h3 class="filters__title">Filter</h3>
+
+            <div class="filters__group">
+              <button
+                class="filters__accordion"
+                aria-expanded="true"
+                aria-controls="filterTopics"
+              >
+                Topics
+              </button>
+              <div class="filters__panel" id="filterTopics">
+                <label class="filters__checkbox">
+                  <input type="checkbox" name="topic" value="anxiety" checked />
+                  <span>Anxiety</span>
+                </label>
+                <label class="filters__checkbox">
+                  <input type="checkbox" name="topic" value="exams" checked />
+                  <span>Exams</span>
+                </label>
+                <label class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    name="topic"
+                    value="low-mood"
+                    checked
+                  />
+                  <span>Low mood</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filters__group">
+              <button
+                class="filters__accordion"
+                aria-expanded="true"
+                aria-controls="filterType"
+              >
+                Type
+              </button>
+              <div class="filters__panel" id="filterType">
+                <label class="filters__checkbox">
+                  <input type="checkbox" name="type" value="guide" checked />
+                  <span>Guide</span>
+                </label>
+                <label class="filters__checkbox">
+                  <input type="checkbox" name="type" value="toolkit" checked />
+                  <span>Toolkit</span>
+                </label>
+                <label class="filters__checkbox">
+                  <input type="checkbox" name="type" value="webinar" checked />
+                  <span>Webinar</span>
+                </label>
+              </div>
+            </div>
+
+            <button
+              class="button button--secondary filters__clear"
+              type="button"
+              aria-label="Clear all filters"
+            >
+              Clear filters
+            </button>
+          </aside>
+
+          <section class="results" aria-label="Search results">
+            <header class="results__header">
+              <form
+                class="results__search"
+                role="search"
+                aria-label="Search resources"
+              >
+                <label for="resultsQuery" class="visually-hidden"
+                  >Search resources</label
+                >
+                <input
+                  id="resultsQuery"
+                  type="search"
+                  class="results__input"
+                  placeholder="Search resources..."
+                />
+              </form>
+
+              <div class="results__sort">
+                <label for="sortBy" class="results__sort-label">Sort by:</label>
+                <select
+                  id="sortBy"
+                  class="results__select"
+                  aria-label="Sort results"
+                >
+                  <option value="newest" selected>Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="popular">Most popular</option>
+                </select>
+              </div>
+            </header>
+
+            <div class="results__grid" id="resultsGrid">
+              <article
+                class="resource-card"
+                data-title="Coping with exam anxiety"
+                data-topics="exams,anxiety"
+                data-type="guide"
+                data-date="2025-06-01"
+                data-popularity="96"
+              >
+                <img
+                  class="resource-card__image"
+                  src="https://via.placeholder.com/600x400"
+                  alt="Resource cover: Exam anxiety"
+                />
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">Coping with exam anxiety</h3>
+                  <p class="resource-card__excerpt">
+                    Actionable steps to prepare and manage nerves.
+                  </p>
+                  <div class="resource-card__meta">
+                    <span class="tag">Guide</span>
+                    <span class="tag">Exams</span>
+                    <span class="tag">Anxiety</span>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="resource-card"
+                data-title="Low mood self-help toolkit"
+                data-topics="low-mood"
+                data-type="toolkit"
+                data-date="2025-02-10"
+                data-popularity="120"
+              >
+                <img
+                  class="resource-card__image"
+                  src="https://via.placeholder.com/600x400"
+                  alt="Resource cover: Low mood toolkit"
+                />
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    Low mood self-help toolkit
+                  </h3>
+                  <p class="resource-card__excerpt">
+                    Exercises and prompts to support your wellbeing.
+                  </p>
+                  <div class="resource-card__meta">
+                    <span class="tag">Toolkit</span>
+                    <span class="tag">Low mood</span>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="resource-card"
+                data-title="Managing stress during deadlines"
+                data-topics="anxiety"
+                data-type="webinar"
+                data-date="2024-11-15"
+                data-popularity="80"
+              >
+                <img
+                  class="resource-card__image"
+                  src="https://via.placeholder.com/600x400"
+                  alt="Resource cover: Stress webinar"
+                />
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    Managing stress during deadlines
+                  </h3>
+                  <p class="resource-card__excerpt">
+                    Watch this webinar for practical strategies.
+                  </p>
+                  <div class="resource-card__meta">
+                    <span class="tag">Webinar</span>
+                    <span class="tag">Anxiety</span>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="resource-card"
+                data-title="Study strategies that stick"
+                data-topics="exams"
+                data-type="guide"
+                data-date="2025-08-12"
+                data-popularity="60"
+              >
+                <img
+                  class="resource-card__image"
+                  src="https://via.placeholder.com/600x400"
+                  alt="Resource cover: Study strategies"
+                />
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    Study strategies that stick
+                  </h3>
+                  <p class="resource-card__excerpt">
+                    Evidence-based techniques to learn effectively.
+                  </p>
+                  <div class="resource-card__meta">
+                    <span class="tag">Guide</span>
+                    <span class="tag">Exams</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- FAQs / Accordions -->
+      <section id="about" class="faq">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-header__title">About Us</h2>
+            <p class="section-header__subtitle">
+              Learn about our mission and how we support students.
+            </p>
+          </header>
+
+          <div class="accordion" role="region" aria-label="About FAQs">
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="faq1"
+              >
+                What is Student Minds?
+              </button>
+              <div class="accordion__panel" id="faq1">
+                <p>
+                  Student Minds is a UK charity focused on students’ mental
+                  health. We provide resources, training, and campaigns to
+                  improve wellbeing at universities.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="faq2"
+              >
+                How can I get involved?
+              </button>
+              <div class="accordion__panel" id="faq2">
+                <p>
+                  You can volunteer, fundraise, share your story, or bring
+                  initiatives to your campus community.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                aria-expanded="false"
+                aria-controls="faq3"
+              >
+                Do you offer training?
+              </button>
+              <div class="accordion__panel" id="faq3">
+                <p>
+                  Yes, we collaborate with universities to deliver training and
+                  resources that help staff and students support mental health.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact form -->
+      <section id="contact" class="contact">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-header__title">Contact us</h2>
+            <p class="section-header__subtitle">
+              Have a question? We’d love to hear from you.
+            </p>
+          </header>
+
+          <form class="form" action="#" method="post" novalidate>
+            <div class="form__grid">
+              <div class="form__field">
+                <label class="form__label" for="name">Full name</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="email">Email</label>
+                <input
+                  class="form__input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+              <div class="form__field form__field--full">
+                <label class="form__label" for="subject">Subject</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="How can we help?"
+                />
+              </div>
+              <div class="form__field form__field--full">
+                <label class="form__label" for="message">Message</label>
+                <textarea
+                  class="form__textarea"
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Write your message..."
+                ></textarea>
+              </div>
+              <div class="form__actions">
+                <button class="button button--primary" type="submit">
+                  Send message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <div class="container newsletter__inner">
+          <div class="newsletter__content">
+            <h2 class="newsletter__title">Join our newsletter</h2>
+            <p class="newsletter__text">
+              Get student wellbeing tips, stories, and updates straight to your
+              inbox.
+            </p>
+          </div>
+          <form class="newsletter__form" action="#" method="post">
+            <label for="newsletterEmail" class="visually-hidden"
+              >Your email</label
+            >
+            <input
+              id="newsletterEmail"
+              class="newsletter__input"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+            <button class="button button--dark" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo" aria-label="Student Minds home">
+            <span class="footer__logo-mark" aria-hidden="true">SM</span>
+            <span class="footer__logo-text">Student Minds</span>
+          </a>
+          <p class="footer__desc">
+            We empower students to look after their mental health, support one
+            another, and create change.
+          </p>
+          <div class="footer__social" aria-label="Social media">
+            <a
+              class="footer__social-link"
+              href="#"
+              aria-label="Follow on Twitter"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M22 5.8c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.2 1.6-2.1-.8.5-1.7.9-2.6 1.1C18 4.6 17 4 15.8 4c-2.2 0-3.9 1.9-3.5 4.1-3-.2-5.7-1.6-7.5-3.8C4 5.5 4.5 7 5.8 7.9c-.6 0-1.2-.2-1.7-.5 0 1.7 1.1 3.2 2.8 3.6-.5.1-1 .2-1.5.1.4 1.5 1.8 2.5 3.4 2.6-1.3 1-3 1.4-4.6 1.2 1.5 1 3.3 1.6 5.2 1.6 6.3 0 9.9-5.4 9.6-10.3.7-.5 1.3-1.1 1.8-1.8z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer__social-link"
+              href="#"
+              aria-label="Follow on Instagram"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer__social-link"
+              href="#"
+              aria-label="Follow on LinkedIn"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zM8 8h3.8v2.2H12c.6-1.1 2.2-2.2 4.5-2.2 4.8 0 5.6 3.2 5.6 7.3V24h-4v-7.7c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4v7.8H8V8z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h3 class="footer__title">Get support</h3>
+            <ul class="footer__list">
+              <li>
+                <a href="#support" class="footer__link">Support overview</a>
+              </li>
+              <li><a href="#search" class="footer__link">Find resources</a></li>
+              <li><a href="#urgent" class="footer__link">Urgent help</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__title">About</h3>
+            <ul class="footer__list">
+              <li><a href="#about" class="footer__link">Our mission</a></li>
+              <li><a href="#about" class="footer__link">Our team</a></li>
+              <li><a href="#about" class="footer__link">Partners</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__title">Resources</h3>
+            <ul class="footer__list">
+              <li><a href="#search" class="footer__link">Guides</a></li>
+              <li><a href="#search" class="footer__link">Toolkits</a></li>
+              <li><a href="#search" class="footer__link">Webinars</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__legal">
+            © <span id="year"></span> Student Minds (UI clone). All rights
+            reserved.
+          </p>
+          <ul class="footer__bottom-links">
+            <li><a href="#" class="footer__bottom-link">Privacy</a></li>
+            <li><a href="#" class="footer__bottom-link">Cookies</a></li>
+            <li><a href="#" class="footer__bottom-link">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 5l7 7M12 5L5 12"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>

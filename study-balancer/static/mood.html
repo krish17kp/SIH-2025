@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mood Forecast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/mood.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h2>Mood Forecast (7 days)</h2>
+      <p class="muted">
+        Log today’s mood, sleep, and study. We forecast your mood for the next
+        week using ARIMA with sleep–study as a driver.
+      </p>
+
+      <div class="grid">
+        <div>
+          <label>Date</label><br />
+          <input type="date" id="date" />
+        </div>
+        <div>
+          <label>Mood (1–5)</label><br />
+          <input
+            type="number"
+            id="mood"
+            min="1"
+            max="5"
+            step="0.5"
+            value="3.0"
+          />
+        </div>
+        <div>
+          <label>Sleep hours</label><br />
+          <input
+            type="number"
+            id="sleep"
+            min="0"
+            max="24"
+            step="0.5"
+            value="7.5"
+          />
+        </div>
+        <div>
+          <label>Study hours</label><br />
+          <input
+            type="number"
+            id="study"
+            min="0"
+            max="24"
+            step="0.5"
+            value="3"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="save">Save today</button>
+        <button id="refresh">Refresh & Forecast</button>
+        <button id="seed">Seed 14 days (demo)</button>
+        <button id="clear">Clear all</button>
+
+        <span id="status"></span>
+      </div>
+
+      <div class="canvas-wrap">
+        <div class="legend">
+          <span class="badge">History (mood)</span>
+          <span class="badge">Forecast (mood)</span>
+        </div>
+        <canvas id="chart" height="120"></canvas>
+      </div>
+
+      <div style="margin-top: 12px">
+        <b>Tip:</b> If the forecast dips near exams, schedule extra breaks and
+        earlier deadlines.
+      </div>
+    </main>
+
+    <!-- Chart.js (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/mood.js"></script>
+  </body>
+</html>

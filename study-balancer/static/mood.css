@@ -1,0 +1,84 @@
+:root {
+  --bg: #0b0b0b;
+  --panel: #141414;
+  --text: #eaeaea;
+  --muted: #9aa0a6;
+  --brand: #ff5a77;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, Segoe UI, Roboto, Arial;
+}
+.card {
+  max-width: 920px;
+  margin: 32px auto;
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+input {
+  background: #0f0f0f;
+  color: var(--text);
+  border: 1px solid #252525;
+  border-radius: 10px;
+  padding: 10px;
+}
+button {
+  background: var(--brand);
+  color: #111;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+#status {
+  color: var(--muted);
+}
+.canvas-wrap {
+  background: #0f0f0f;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 14px;
+}
+.legend {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.badge {
+  font-size: 0.8rem;
+  background: #222;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.canvas-wrap {
+  background: #0f0f0f;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 14px;
+  height: 260px;
+}

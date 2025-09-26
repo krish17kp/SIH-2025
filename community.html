@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Community</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Simple dark styling just for the community page -->
+    <style>
+      :root {
+        --bg: #0b0b0b;
+        --panel: #121212;
+        --panel2: #171717;
+        --line: #222;
+        --text: #eaeaea;
+        --muted: #9aa0a6;
+        --brand: #d4143d;
+        --brand-2: #ff3366;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, Segoe UI, Inter, Roboto, Arial, sans-serif;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 14px;
+      }
+
+      /* HEADER */
+      header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+      }
+      .back {
+        background: #ffffff10;
+        border: 1px solid #ffffff22;
+        border-radius: 999px;
+        padding: 8px 12px;
+      }
+      .title {
+        font-weight: 800;
+        font-size: 22px;
+        margin-left: 8px;
+      }
+      .pill {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #ffffff10;
+        border: 1px solid #ffffff22;
+      }
+      .right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn {
+        background: var(--brand);
+        border: 0;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 10px;
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+      .btn.secondary {
+        background: #ffffff10;
+        border: 1px solid #ffffff22;
+        color: #fff;
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* User menu */
+      .userbox {
+        position: relative;
+      }
+      .userbtn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+      }
+      .userbtn img {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid #2a2a2a;
+      }
+      .menu {
+        position: absolute;
+        right: 0;
+        top: 42px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        min-width: 220px;
+        display: none;
+        overflow: hidden;
+        z-index: 10;
+      }
+      .menu .item {
+        padding: 10px 12px;
+        cursor: pointer;
+        border-bottom: 1px solid #1d1d1d;
+      }
+      .menu .item:last-child {
+        border: 0;
+      }
+      .menu .item:hover {
+        background: var(--panel2);
+      }
+
+      /* LAYOUT */
+      .grid {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+
+      /* LEFT rail */
+      .rail {
+        padding: 10px;
+      }
+      .rail h4 {
+        margin: 4px 0 10px 6px;
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+      }
+      .srvbar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .srv {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background: #1c1c1c;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .srv img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .srv.active {
+        outline: 2px solid var(--brand);
+      }
+      .channels .row {
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .channels .row:hover {
+        background: #ffffff08;
+      }
+      .channels .row.active {
+        background: #ffffff12;
+        border: 1px solid #ffffff22;
+      }
+      .channels .cat {
+        margin: 10px 0 4px 10px;
+        color: #8a8a8a;
+        font-weight: 700;
+        font-size: 12px;
+      }
+
+      /* MAIN column */
+      .main {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 10px;
+        padding: 10px;
+      }
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .name {
+        font-weight: 800;
+      }
+      .voicebar {
+        display: flex;
+        gap: 8px;
+        margin-left: auto;
+      }
+      .pillBtn {
+        background: #0a0;
+        border: 0;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .pillBtn.red {
+        background: #a00;
+      }
+
+      .msgbox {
+        min-height: 420px;
+        max-height: 60vh;
+        overflow: auto;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #161616, #111);
+      }
+      .empty {
+        color: var(--muted);
+        text-align: center;
+        padding: 30px;
+      }
+      .msg {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 12px;
+        background: #ffffff06;
+        border: 1px solid #191919;
+      }
+      .msg.me {
+        background: #1a1a1a;
+        border-color: #222;
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .meta img {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid #222;
+      }
+      .meta .time {
+        margin-left: auto;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .composer {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .att {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .thumb {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #222;
+      }
+      .inputrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .input {
+        flex: 1;
+        background: #171717;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 14px 12px;
+        color: #fff;
+      }
+      .tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tool {
+        background: #ffffff12;
+        border: 1px solid #ffffff22;
+        border-radius: 10px;
+        padding: 8px 10px;
+        cursor: pointer;
+      }
+
+      #emojiPanel {
+        position: absolute;
+        bottom: 60px;
+        left: 14px;
+        width: 260px;
+        height: 180px;
+        overflow: auto;
+        background: #101010;
+        border: 1px solid #222;
+        border-radius: 12px;
+        display: none;
+        padding: 8px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+      #emojiPanel button {
+        background: none;
+        border: 0;
+        cursor: pointer;
+        font-size: 22px;
+        padding: 6px;
+        border-radius: 8px;
+      }
+      #emojiPanel button:hover {
+        background: #ffffff10;
+      }
+
+      /* Profile modal & friends modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #0008;
+        display: none;
+        place-items: center;
+        z-index: 100;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+        min-width: 320px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        margin: 8px 0;
+      }
+      .card input[type="text"],
+      .card input[type="file"] {
+        flex: 1;
+        background: #171717;
+        border: 1px solid #222;
+        border-radius: 10px;
+        padding: 10px;
+        color: #fff;
+      }
+
+      /* Hover profile tip */
+      .tip {
+        position: absolute;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px;
+        display: none;
+        gap: 8px;
+        align-items: center;
+        z-index: 20;
+      }
+      .tip img {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: 1px solid #262626;
+      }
+      .tip .n {
+        font-weight: 800;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <!-- HEADER -->
+      <header>
+        <a class="back" href="index.html">← Back to site</a>
+        <div class="title">Community</div>
+        <span class="pill">Live chat</span>
+
+        <div class="right">
+          <!-- user dropdown -->
+          <div class="userbox" id="userBox">
+            <button class="userbtn" id="userBtn">
+              <img id="userAvatar" src="images/sih_logo.png" alt="me" />
+              <span id="userName">Loading…</span>
+            </button>
+            <div class="menu" id="userMenu">
+              <div class="item" id="openProfile">Profile</div>
+              <div class="item" id="openFriends">Friends</div>
+              <div class="item" id="manageAccount">Manage account</div>
+              <div class="item" id="switchAccount">Switch account</div>
+              <div class="item" id="signOutBtn">Sign out</div>
+            </div>
+          </div>
+
+          <span id="userBadge" class="pill">Checking auth…</span>
+        </div>
+      </header>
+
+      <!-- LAYOUT -->
+      <div class="grid">
+        <!-- LEFT: servers + channels -->
+        <aside class="panel rail">
+          <h4>Servers</h4>
+          <div id="serversRail" class="srvbar">
+            <!-- servers inserted here -->
+            <button id="addServerBtn" class="srv" title="Create server">
+              ＋
+            </button>
+          </div>
+
+          <h4 style="margin-top: 12px">Channels</h4>
+          <div class="channels" id="channelsList">
+            <!-- categories + channels injected -->
+            <button
+              id="addChannelBtn"
+              class="btn secondary"
+              style="width: 100%; margin-top: 8px"
+            >
+              + Add channel
+            </button>
+          </div>
+        </aside>
+
+        <!-- RIGHT: chat -->
+        <main class="panel main">
+          <div class="breadcrumbs">
+            <span class="muted">Server:</span>
+            <span id="serverName" class="name">—</span>
+            <span class="muted">/</span>
+            <span class="muted">Channel:</span>
+            <span id="channelName" class="name">—</span>
+
+            <!-- Voice controls -->
+            <div class="voicebar" style="margin-left: auto">
+              <button class="pillBtn" id="joinVoice" title="Join voice">
+                Join voice
+              </button>
+              <button
+                class="pillBtn red"
+                id="leaveVoice"
+                style="display: none"
+                title="Leave voice"
+              >
+                Leave voice
+              </button>
+              <button class="pillBtn" id="musicBtn" title="Play server music">
+                ♫ Music
+              </button>
+            </div>
+          </div>
+
+          <div id="emojiPanel"></div>
+
+          <section id="messages" class="msgbox">
+            <div class="empty">Loading messages…</div>
+          </section>
+
+          <form id="composer" class="composer">
+            <div id="attachments" class="att"></div>
+            <div class="inputrow">
+              <div class="tools">
+                <label class="tool" title="Add image">
+                  📷
+                  <input id="imageInput" type="file" accept="image/*" hidden />
+                </label>
+                <label class="tool" title="Attach file">
+                  📎 <input id="fileInput" type="file" hidden />
+                </label>
+                <button id="emojiBtn" type="button" class="tool" title="Emoji">
+                  😊
+                </button>
+              </div>
+              <input
+                id="chatInput"
+                class="input"
+                type="text"
+                placeholder="Type a message and press Enter…"
+              />
+              <button class="btn" type="submit">Send</button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <!-- Hover mini profile -->
+    <div class="tip" id="profileTip">
+      <img id="tipAvatar" src="" alt="" />
+      <div>
+        <div class="n" id="tipName"></div>
+        <div
+          class="s"
+          id="tipEmail"
+          style="color: #9aa0a6; font-size: 12px"
+        ></div>
+      </div>
+    </div>
+
+    <!-- PROFILE MODAL -->
+    <div class="modal" id="profileModal">
+      <div class="card">
+        <h3 style="margin: 0 0 8px">Your profile</h3>
+        <div class="row">
+          <img
+            id="profilePreview"
+            src="images/sih_logo.png"
+            style="
+              width: 56px;
+              height: 56px;
+              border-radius: 12px;
+              border: 1px solid #262626;
+            "
+          />
+          <input id="profileName" type="text" placeholder="Display name" />
+        </div>
+        <div class="row">
+          <input id="profilePhoto" type="file" accept="image/*" />
+        </div>
+        <div class="row" style="justify-content: flex-end">
+          <button class="btn secondary" id="closeProfile">Cancel</button>
+          <button class="btn" id="saveProfile">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRIENDS MODAL -->
+    <div class="modal" id="friendsModal">
+      <div class="card" style="min-width: 360px">
+        <h3 style="margin: 0 0 8px">Friends</h3>
+        <div class="row">
+          <input
+            id="friendEmail"
+            type="text"
+            placeholder="Add friend by email"
+          />
+          <button class="btn" id="addFriendBtn">Add</button>
+        </div>
+        <div class="row">
+          <div style="flex: 1">
+            <div style="color: #888; margin: 6px 0">Requests</div>
+            <div
+              id="friendReqs"
+              style="display: flex; flex-direction: column; gap: 8px"
+            ></div>
+          </div>
+          <div style="flex: 1">
+            <div style="color: #888; margin: 6px 0">Friends</div>
+            <div
+              id="friendList"
+              style="display: flex; flex-direction: column; gap: 8px"
+            ></div>
+          </div>
+        </div>
+        <div class="row" style="justify-content: flex-end">
+          <button class="btn secondary" id="closeFriends">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- order matters: Firebase config first, then community/voice logic -->
+    <script type="module" src="./firebase-config.js"></script>
+    <script type="module" src="./community.js"></script>
+
+    <!-- WebRTC helper for basic voice -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+    <script type="module" src="./voice.js"></script>
+  </body>
+</html>
