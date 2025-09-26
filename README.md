@@ -1,4 +1,4 @@
-# The Unwinf
+# The Unwind
 _A privacy-first wellbeing + community web app for higher-ed students._
 
 Helps students **plan their week**, **balance study vs. rest**, and **forecast mood**, with optional **Discord-style community** (text + voice/video). Runs on a tiny VM; no GPU.
